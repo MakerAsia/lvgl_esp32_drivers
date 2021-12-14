@@ -76,6 +76,12 @@ menu "LVGL TFT Display controller"
             bool "Wireless Tag WT32-SC01"
             select LV_TFT_DISPLAY_CONTROLLER_ST7796S
             select LV_TFT_DISPLAY_PROTOCOL_SPI
+        config LV_PREDEFINED_DISPLAY_LILYGO_T4
+            bool "LILYGO T4 1.3"
+            select LV_TFT_DISPLAY_CONTROLLER_ILI9341
+            select LV_TFT_DISPLAY_PROTOCOL_SPI
+    
+
     endchoice
 
     # START of helper symbols.
@@ -606,7 +612,7 @@ menu "LVGL TFT Display controller"
 
     config LV_INVERT_COLORS
         bool "Invert colors in display" if LV_TFT_DISPLAY_CONTROLLER_ILI9341 || LV_TFT_DISPLAY_CONTROLLER_ST7735S || LV_TFT_DISPLAY_CONTROLLER_ILI9481 || LV_TFT_DISPLAY_CONTROLLER_ST7789 || LV_TFT_DISPLAY_CONTROLLER_SSD1306 || LV_TFT_DISPLAY_CONTROLLER_SH1107 || LV_TFT_DISPLAY_CONTROLLER_HX8357 || LV_TFT_DISPLAY_CONTROLLER_GC9A01 || LV_TFT_DISPLAY_CONTROLLER_ILI9163C
-        default y if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICKC
+        default y if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICKC || LV_PREDEFINED_DISPLAY_LILYGO_T4
         help
             If the colors look inverted on your display, try enabling this.
             If it didn't help try LVGL configuration -> Swap the 2 bytes of RGB565 color.
@@ -755,6 +761,7 @@ menu "LVGL TFT Display controller"
             default 23 if LV_PREDEFINED_DISPLAY_ATAG
             default 23 if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICK
             default 23 if LV_PREDEFINED_DISPLAY_M5CORE2
+            default 23 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 15 if LV_PREDEFINED_DISPLAY_M5STICKC
             default 18 if LV_PREDEFINED_DISPLAY_ADA_FEATHERWING
             default 23 if LV_PREDEFINED_PINS_TKOALA
@@ -769,6 +776,7 @@ menu "LVGL TFT Display controller"
             bool "GPIO for MISO (Master In Slave Out)" if LV_TFT_DISPLAY_PROTOCOL_SPI
             default y if LV_PREDEFINED_PINS_TKOALA
             default y if LV_PREDEFINED_DISPLAY_M5CORE2
+            default y if LV_PREDEFINED_DISPLAY_LILYGO_T4
             help
                 Enable the MISO signal to control the display. You can disable
                 it when the display does not need MISO signal to be controlled.
@@ -778,6 +786,7 @@ menu "LVGL TFT Display controller"
             depends on LV_DISPLAY_USE_SPI_MISO
             default 19 if LV_PREDEFINED_PINS_TKOALA
             default 38 if LV_PREDEFINED_DISPLAY_M5CORE2
+            default 12 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 0
 
             help
@@ -812,6 +821,7 @@ menu "LVGL TFT Display controller"
             int "GPIO for CLK (SCK / Serial Clock)" if LV_TFT_DISPLAY_PROTOCOL_SPI
             default 18 if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICK
             default 18 if LV_PREDEFINED_DISPLAY_M5CORE2
+            default 18 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 13 if LV_PREDEFINED_DISPLAY_M5STICKC
             default 18 if LV_PREDEFINED_DISPLAY_ATAG
             default 19 if LV_PREDEFINED_DISPLAY_WROVER4
@@ -839,6 +849,7 @@ menu "LVGL TFT Display controller"
             default 14 if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICK
             default 5 if LV_PREDEFINED_DISPLAY_M5CORE2
             default 5 if LV_PREDEFINED_DISPLAY_M5STICKC
+            default 27 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 22 if LV_PREDEFINED_DISPLAY_WROVER4
             default 15 if LV_PREDEFINED_DISPLAY_ADA_FEATHERWING
             default 5 if LV_PREDEFINED_PINS_TKOALA
@@ -864,6 +875,7 @@ menu "LVGL TFT Display controller"
             default 19 if LV_PREDEFINED_PINS_38V1
             default 17 if LV_PREDEFINED_PINS_38V4
             default 27 if LV_PREDEFINED_DISPLAY_M5STACK || LV_PREDEFINED_DISPLAY_M5STICK
+            default 26 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 15 if LV_PREDEFINED_DISPLAY_M5CORE2
             default 23 if LV_PREDEFINED_DISPLAY_M5STICKC
             default 21 if LV_PREDEFINED_DISPLAY_WROVER4
@@ -905,6 +917,7 @@ menu "LVGL TFT Display controller"
             default 23 if LV_PREDEFINED_DISPLAY_TTGO
             default 33 if LV_PREDEFINED_DISPLAY_TTGO_CAMERA_PLUS
             default 22 if LV_PREDEFINED_DISPLAY_WT32_SC01
+            default 5 if LV_PREDEFINED_DISPLAY_LILYGO_T4
             default 4
 
             help
@@ -997,6 +1010,7 @@ menu "LVGL TFT Display controller"
         default 4 if LV_PREDEFINED_DISPLAY_TTGO
         default 2 if LV_PREDEFINED_DISPLAY_TTGO_CAMERA_PLUS
         default 23 if LV_PREDEFINED_DISPLAY_WT32_SC01
+        default 4 if LV_PREDEFINED_DISPLAY_LILYGO_T4
         default -1
 
         help
